@@ -223,42 +223,14 @@ img, svg { max-width: 100%; }
 }
 .split-body { max-width: 34rem; }
 
-.tank {
-  position: relative;
-  aspect-ratio: 4 / 3;
+.split-media { margin: 0; }
+.split-media img {
+  width: 100%; height: auto; display: block;
   border-radius: var(--radius);
-  overflow: hidden;
   box-shadow: var(--shadow-lg);
-  background: linear-gradient(180deg, #7fdbe4 0%, #1a7f96 60%, #063d4f 100%);
-  border: 6px solid #e8eff0;
 }
-.tank-water {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(600px 200px at 30% 0%, rgba(255, 255, 255, .35), transparent 70%),
-    repeating-linear-gradient(115deg, rgba(255,255,255,.05) 0 8px, transparent 8px 22px);
-}
-.tank-plants {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 34%;
-  background:
-    radial-gradient(60px 90px at 12% 100%, #14764f 0 60%, transparent 61%),
-    radial-gradient(45px 120px at 26% 100%, #1a8f5f 0 60%, transparent 61%),
-    radial-gradient(70px 70px at 78% 100%, #126b48 0 60%, transparent 61%),
-    radial-gradient(50px 100px at 90% 100%, #1a8f5f 0 60%, transparent 61%),
-    linear-gradient(0deg, #c9a227 0 22%, transparent 22%);
-  opacity: .9;
-}
-.swimmer { position: absolute; width: 92px; height: 46px; }
-.swimmer-1 { color: var(--gold);  top: 22%; animation: swim 16s linear infinite; }
-.swimmer-2 { color: var(--coral); top: 46%; width: 64px; animation: swim 22s linear infinite 3s; }
-.swimmer-3 { color: #ffd7a1;      top: 66%; width: 46px; animation: swim 13s linear infinite 6s; }
-
-@keyframes swim {
-  0%   { transform: translateX(-25%) scaleX(-1); }
-  49%  { transform: translateX(115%) scaleX(-1); }
-  50%  { transform: translateX(115%) scaleX(1); }
-  99%  { transform: translateX(-25%) scaleX(1); }
-  100% { transform: translateX(-25%) scaleX(-1); }
+.split-media figcaption {
+  margin-top: .75rem; font-size: .85rem; color: var(--ink-soft); text-align: center;
 }
 
 .tick-list { list-style: none; padding: 0; margin: 1.5rem 0 2rem; }
@@ -299,24 +271,24 @@ img, svg { max-width: 100%; }
 .fish-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
 .fish-card.is-hidden { display: none; }
 
-.fish-art { height: 140px; position: relative; overflow: hidden; }
-.fish-art::after {
+.fish-art { height: 150px; position: relative; overflow: hidden; background: var(--bg-tint); }
+.fish-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* the diagonal sheen only belongs on the placeholder colour panels */
+.fish-art:not(:has(img))::after {
   content: "";
   position: absolute; inset: 0;
   background: repeating-linear-gradient(125deg, rgba(255,255,255,.14) 0 10px, transparent 10px 26px);
 }
-.art-guppy    { background: linear-gradient(135deg, #ff6b6b, #ffa62b); }
-.art-molly    { background: linear-gradient(135deg, #2b2d42, #6c7a89); }
-.art-platy    { background: linear-gradient(135deg, #ff8c42, #ffd23f); }
-.art-betta    { background: linear-gradient(135deg, #7b2ff7, #f107a3); }
-.art-gourami  { background: linear-gradient(135deg, #29b6f6, #80d8ff); }
-.art-angel    { background: linear-gradient(135deg, #1b3a4b, #5c8ea6); }
-.art-oscar    { background: linear-gradient(135deg, #8e2de2, #d84315); }
-.art-cichlid  { background: linear-gradient(135deg, #f9d423, #1fa2ff); }
-.art-koi      { background: linear-gradient(135deg, #fff1e6, #ff5f6d); }
-.art-goldfish { background: linear-gradient(135deg, #ffb347, #ff7b00); }
-.art-tetra    { background: linear-gradient(135deg, #00c9ff, #ff416c); }
-.art-catfish  { background: linear-gradient(135deg, #4b6cb7, #182848); }
+.art-albino-red { background: linear-gradient(135deg, #ffd9d0, #ff5f6d); }
+.art-blue-grass { background: linear-gradient(135deg, #1fa2ff, #12d8fa); }
+.art-moscow     { background: linear-gradient(135deg, #3a1c71, #1e5799); }
+.art-red-koi    { background: linear-gradient(135deg, #fff6f0 40%, #ff3d2e); }
+.art-blue-koi   { background: linear-gradient(135deg, #f4faff 40%, #2b6bd6); }
+.art-mosaic     { background: linear-gradient(135deg, #f9d423, #1fa2ff); }
+.art-dumbo      { background: linear-gradient(135deg, #d9e7ef, #7b9bb5); }
+.art-half-black { background: linear-gradient(135deg, #ff8a5c 45%, #14181d); }
+.art-platinum   { background: linear-gradient(135deg, #f6f9fb, #c9d6df); }
+.art-red-dragon { background: linear-gradient(135deg, #d84315, #8e2de2); }
 
 .fish-body { padding: 1.25rem 1.35rem 1.5rem; }
 .fish-body h3 { margin-bottom: .25rem; }
@@ -334,6 +306,39 @@ img, svg { max-width: 100%; }
   background: #fff; border: 1px dashed var(--line); border-radius: var(--radius-sm);
   color: var(--ink-soft); font-size: .95rem;
 }
+
+/* ---------- videos ---------- */
+.video-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;
+}
+.video-card {
+  text-decoration: none; color: inherit;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; background: #fff;
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.video-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.video-card h3 { font-size: 1rem; margin: 1rem 1.15rem .3rem; }
+.video-card p { margin: 0 1.15rem 1.15rem; font-size: .9rem; color: var(--ink-soft); }
+
+.video-thumb { position: relative; aspect-ratio: 16 / 9; background: #0b2530; }
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-thumb .play {
+  position: absolute; inset: 0; margin: auto;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(6, 61, 79, .78);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+  transition: transform .2s ease, background .2s ease;
+}
+.video-thumb .play::after {
+  content: ""; position: absolute; inset: 0; margin: auto;
+  width: 0; height: 0;
+  border-left: 17px solid #fff;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  transform: translateX(3px);
+}
+.video-card:hover .play { background: var(--coral); transform: scale(1.08); }
 
 /* ---------- why us ---------- */
 .feature-grid {
@@ -371,16 +376,6 @@ img, svg { max-width: 100%; }
 }
 .care-list p { color: rgba(234, 247, 249, .82); font-size: .95rem; margin: 0; }
 
-/* ---------- reviews ---------- */
-.review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; }
-.review {
-  margin: 0; padding: 1.75rem;
-  background: var(--bg-tint); border-radius: var(--radius);
-  border-left: 4px solid var(--gold);
-}
-.review blockquote { margin: 0 0 1rem; font-size: 1.02rem; }
-.review blockquote::before { content: "“"; font-family: var(--font-head); font-size: 2rem; color: var(--gold); line-height: 0; vertical-align: -.35em; margin-right: .15em; }
-.review figcaption { font-size: .85rem; color: var(--ink-soft); font-weight: 500; }
 .review-note { margin-top: 2rem; color: var(--ink-soft); }
 
 /* ---------- contact ---------- */
