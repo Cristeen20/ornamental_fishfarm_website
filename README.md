@@ -32,7 +32,7 @@ and replace it:
 | `qualityornamentalfishfarm@gmail.com` | Contact section + JSON-LD | Your real email |
 | `Farm address line, Your town, Kerala 000000` | Contact section + JSON-LD | Your farm address |
 | `Since 2015` / `10 yrs` / `40+` | Hero | Your real founding year and numbers |
-| `https://qualityornamentalfishfarm.vercel.app/` | `og:url` + JSON-LD image | Your final domain |
+| `https://ornamentalfishfarmwebsite.vercel.app/` | `og:url` + JSON-LD image | Your final domain |
 | Review quotes in `#reviews` | Reviews section | Real customer reviews (or delete the section) |
 
 The enquiry form reads the WhatsApp number from the floating button's link, so
