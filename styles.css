@@ -127,7 +127,7 @@ img, svg { max-width: 100%; }
   min-height: 68px;
 }
 .brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; color: var(--deep); }
-.brand-mark { width: 34px; height: 34px; color: var(--teal); flex: none; }
+.brand-mark { width: 40px; height: 40px; flex: none; border-radius: 50%; object-fit: cover; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-text strong { font-family: var(--font-head); font-size: 1.1rem; }
 .brand-text em {
