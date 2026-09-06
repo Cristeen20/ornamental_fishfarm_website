@@ -83,17 +83,10 @@
     });
   });
 
-  /* ---------- enquiry form → WhatsApp ----------
-     The number is read from the floating WhatsApp button, so it only ever has
-     to be edited in index.html. */
+  /* ---------- enquiry form → email ---------- */
   var form = document.getElementById('enquiryForm');
   var note = document.getElementById('formNote');
-
-  function whatsappNumber() {
-    var fab = document.querySelector('.whatsapp-fab');
-    var match = fab && fab.getAttribute('href').match(/wa\.me\/(\d+)/);
-    return match ? match[1] : '';
-  }
+  var ENQUIRY_EMAIL = 'qualityornamentalfishfarm@gmail.com';
 
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -108,12 +101,6 @@
       }
       form.elements.name.classList.remove('is-invalid');
 
-      var number = whatsappNumber();
-      if (!number) {
-        if (note) note.textContent = 'WhatsApp is not configured yet — please use the phone number above.';
-        return;
-      }
-
       var lines = [
         'Hello Quality Ornamental Fish Farm,',
         '',
@@ -123,13 +110,14 @@
         'Message: ' + (form.elements.message.value.trim() || '—')
       ];
 
-      window.open(
-        'https://wa.me/' + number + '?text=' + encodeURIComponent(lines.join('\n')),
-        '_blank',
-        'noopener'
-      );
+      var subject = 'Guppy enquiry from ' + name;
+      var mailto = 'mailto:' + ENQUIRY_EMAIL +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(lines.join('\n'));
 
-      if (note) note.textContent = 'Opening WhatsApp with your enquiry…';
+      window.location.href = mailto;
+
+      if (note) note.textContent = 'Opening your email app with your enquiry…';
     });
   }
 

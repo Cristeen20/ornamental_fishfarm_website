@@ -432,17 +432,17 @@ img, svg { max-width: 100%; }
   color: rgba(234, 247, 249, .6);
 }
 
-/* ---------- whatsapp fab ---------- */
-.whatsapp-fab {
+/* ---------- email fab ---------- */
+.email-fab {
   position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 90;
   width: 54px; height: 54px; border-radius: 50%;
   display: grid; place-items: center;
-  background: #25d366; color: #fff;
-  box-shadow: 0 10px 26px rgba(37, 211, 102, .45);
+  background: var(--teal); color: #fff;
+  box-shadow: 0 10px 26px rgba(13, 139, 161, .45);
   transition: transform .2s ease;
 }
-.whatsapp-fab:hover { transform: scale(1.08); }
-.whatsapp-fab svg { width: 28px; height: 28px; }
+.email-fab:hover { transform: scale(1.08); }
+.email-fab svg { width: 26px; height: 26px; }
 
 /* ---------- motion ---------- */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
